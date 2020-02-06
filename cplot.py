@@ -58,11 +58,14 @@ def hsl_to_rgb(hsl):
     hue_b = (h - 1.0/3.0) % 1.0
 
     idx = hue_r < 2.0/3.0
-    r[idx] = m1[idx] + (m2[idx] - m1[idx]) * (2.0/3.0*ones[idx] - hue_r[idx]) * 6.0
+    r[idx] = m1[idx] + (m2[idx] - m1[idx])\
+        * (2.0/3.0*ones[idx] - hue_r[idx]) * 6.0
     idx = hue_g < 2.0/3.0
-    g[idx] = m1[idx] + (m2[idx] - m1[idx]) * (2.0/3.0*ones[idx] - hue_g[idx]) * 6.0
+    g[idx] = m1[idx] + (m2[idx] - m1[idx])\
+        * (2.0/3.0*ones[idx] - hue_g[idx]) * 6.0
     idx = hue_b < 2.0/3.0
-    b[idx] = m1[idx] + (m2[idx] - m1[idx]) * (2.0/3.0*ones[idx] - hue_b[idx]) * 6.0
+    b[idx] = m1[idx] + (m2[idx] - m1[idx])\
+        * (2.0/3.0*ones[idx] - hue_b[idx]) * 6.0
 
     idx = hue_r < 1.0/2.0
     r[idx] = m2[idx]
@@ -120,9 +123,9 @@ def complex_plot(f, xrange, yrange, N=2**10):
     plt.show()
 
 
-def complex_save(f, xrange, yrange, fname, N=2**10):
+def complex_save(f, w, xrange, yrange, fname, N=2**10):
     z = gen_z(xrange, yrange, N)
-    im = complex_im(f(z))
+    im = complex_im(f(z, w))
     plt.figure(dpi=150)
     plt.imshow(im, extent=(xrange[0], xrange[1], yrange[0], yrange[1]))
     # plt.gca().set_xticklabels(np.array(plt.gca().get_xticks())/1024)
