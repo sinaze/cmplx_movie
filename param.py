@@ -57,3 +57,6 @@ def f(k, w):
     z3 = iv(1, k*R) * iv(0, lambda_t(k, w)*R) * (c1 - c2 - c3)
     z4 = iv(1, k*R) * iv(1, lambda_t(k, w)*R) * (d1 - d2)
     return z1 + z2 + z3 + z4
+
+
+f0 = lambda z: f(z, 100)
